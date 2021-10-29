@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LV1</title>
+    <style>
+    .contain{
+        background-color:rgb(117, 107, 107);
+        display: flex;
+        height:100%;
+        flex-direction:row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        padding: 20px;
+        align-content: space-around;
+    }
+
+    #a{
+        width: 150px;
+        height: 120px;
+        background-color: #f00;
+        order:1;
+    }
+    #b{
+        width: 150px;
+        height: 100px;
+        background: #00f;
+        order:2;
+    }
+    #c{
+        width: 150px;
+        height: 40px;
+        background: #00f;
+        order:3;
+    }
+    #d{
+        width: 150px;
+        height: 200px;
+        background-color: #0f0;
+        order:4;
+    }
+
+    @media screen and (max-width:640px){
+        #d{order:0;}
+        .contain{align-items: flex-start;}
+    }
+    </style>
+</head>
+<body>
+    <div class="contain">
+        <div id="a">111</div>
+        <div id="b">222</div>
+        <div id="c">333</div>
+        <div id="d">444</div>
+    </div>
+</body>
+</html>
