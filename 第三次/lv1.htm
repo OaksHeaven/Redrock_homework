@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let obj={name:"comp",cpu:"AMD Ryzen 7 4800H",Gpu:"RTX 3060ti"};
+
+    //1.函数方法
+    function copy(obj){
+        let newObj={};
+        for(let i in obj){
+            newObj[i]=obj[i];
+        }
+        return newObj;
+    }
+    let obj1=copy(obj);
+
+    //2.点引用，for循环
+    let obj2={};
+    for(let i in obj){
+        obj2.name=obj.name;
+        obj2.cpu=obj.cpu;
+        obj2.Gpu=obj.Gpu;
+    }
+    //3.直接复制
+    let obj3=obj;
+
+    let a=new Array();
+    a.push(obj1,obj2,obj3);
+    console.table(a);
+</script>
+<body>
+    
+</body>
+</html>

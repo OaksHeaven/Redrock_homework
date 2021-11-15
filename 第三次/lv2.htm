@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let arr = [[1, [2, 3], 4], [5, [6, 7], 8, 9]];
+function fn(array) {
+    let ty=Number;
+
+    let a = array.reduce((newArr = [], present) => {
+            return newArr+present+',';//为什么在递归时调用fn，显示newArr.contact()不是一个function？
+        })
+    for(let i of a){
+        console.log(typeof(i));
+        if(typeof(i)=='object'){
+            
+            a=fn(a);
+        }
+    }
+    return a;
+}
+let arr1=[1];
+console.log(fn(arr));
+</script>
+<body>
+    
+</body>
+</html>
