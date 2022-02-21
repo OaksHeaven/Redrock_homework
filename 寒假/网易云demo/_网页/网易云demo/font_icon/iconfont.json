@@ -1,0 +1,114 @@
+{
+  "id": "3191805",
+  "name": "Cloud_Music",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "980894",
+      "name": "暂停",
+      "font_class": "weibiaoti519",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "1129591",
+      "name": "密码",
+      "font_class": "mima",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "1546609",
+      "name": "邮箱",
+      "font_class": "youxiang",
+      "unicode": "e69d",
+      "unicode_decimal": 59037
+    },
+    {
+      "icon_id": "1727541",
+      "name": "308上一页、后退、返回",
+      "font_class": "shangyiyehoutuifanhui",
+      "unicode": "e8ef",
+      "unicode_decimal": 59631
+    },
+    {
+      "icon_id": "1727542",
+      "name": "309下一页、前进、查看更多",
+      "font_class": "xiayiyeqianjinchakangengduo",
+      "unicode": "e8f1",
+      "unicode_decimal": 59633
+    },
+    {
+      "icon_id": "4942675",
+      "name": "退出",
+      "font_class": "tuichu",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "5387806",
+      "name": "播放_o",
+      "font_class": "bofang_o",
+      "unicode": "eb5e",
+      "unicode_decimal": 60254
+    },
+    {
+      "icon_id": "6616997",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "eca0",
+      "unicode_decimal": 60576
+    },
+    {
+      "icon_id": "7060117",
+      "name": "视频播放时播放",
+      "font_class": "shipinbofangshibofang",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "8341784",
+      "name": "上一首",
+      "font_class": "shangyishou",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "8341786",
+      "name": "下一首",
+      "font_class": "xiayishou",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "11372639",
+      "name": "爱心",
+      "font_class": "aixin",
+      "unicode": "e8ab",
+      "unicode_decimal": 59563
+    },
+    {
+      "icon_id": "11490918",
+      "name": "最小化",
+      "font_class": "zuixiaohua",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "15346591",
+      "name": "播放列表",
+      "font_class": "bofangliebiao",
+      "unicode": "e6a7",
+      "unicode_decimal": 59047
+    },
+    {
+      "icon_id": "27411094",
+      "name": "播放列表",
+      "font_class": "bofangliebiao1",
+      "unicode": "e716",
+      "unicode_decimal": 59158
+    }
+  ]
+}

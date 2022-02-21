@@ -1,0 +1,482 @@
+/* body无外边距;初始化 */
+html,
+body {
+    margin: 0px;
+    height: 100%;
+}
+
+a,
+a:visited,
+:active {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+a:hover {
+    color: rgba(0, 0, 0, 2);
+}
+
+p {
+    display: inline;
+}
+
+ul,
+li {
+    padding: 0;
+    margin: 0px;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+li:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* 总盒子 */
+#FATHER {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    overflow-y: hidden;
+}
+
+/* 顶部header */
+#topHeader {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #EC4141;
+    height: 7%;
+}
+
+/* logo */
+#logoimg {
+    float: left;
+    overflow: hidden;
+    width: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* search */
+#search {
+    height: 60%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.07);
+    left: 325px;
+    border-radius: 20px;
+}
+
+#search input {
+    height: 100%;
+    float: left;
+    outline-style: none;
+    border: none;
+    background-color: transparent;
+    color: white;
+}
+
+#search p {
+    float: left;
+    margin: 10px 6px;
+    color: white;
+    opacity: unset;
+}
+
+/* user */
+#user {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    justify-content: left;
+    align-items: center;
+    right: 280px;
+}
+
+#userImg {
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+#user p {
+    color: white;
+    font-size: 14px;
+}
+
+#user img {
+    height: 30px;
+}
+
+/* 内容 */
+#allContent {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex: 1;
+    overflow-y: hidden;
+}
+
+/* 侧边栏 */
+#sidebar {
+    background-color: white;
+    flex: 1;
+    padding: 8px;
+    overflow-y: auto;
+    border-style: none solid none none;
+    border-color: gray;
+    border-width: 1px;
+}
+
+/* 侧边栏列表 */
+#sidebar div {
+    width: 100%;
+    height: 42px;
+}
+
+#sidebar p {
+    line-height: 42px;
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+
+#sidebar div:hover {
+    background-color: rgb(236, 236, 236);
+}
+
+#sidebar li {
+    border-radius: 7px;
+}
+
+/* 内容盒子 */
+#contentBox {
+    flex: 7;
+    height: 100%;
+    overflow: auto;
+    overflow-y: auto;
+}
+
+/* 主页面 */
+#homePage {
+    overflow-y: auto;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#homePageSwitch {
+    width: 90%;
+}
+
+#sideshow {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#sideshow p {
+    position: absolute;
+}
+
+#left {
+    position: absolute;
+    left: 100px;
+}
+
+#right {
+    position: absolute;
+    right: 100px;
+}
+
+/* 切换条 */
+.switchRow {
+    width: 100%;
+    height: 38.4px;
+    display: flex;
+    align-items: center;
+}
+
+.switchRow span {
+    margin: 10px;
+}
+
+.switchRow span:hover {
+    font-size: 120%;
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: solid red 6px;
+}
+
+/* 个性推荐 */
+#recommend {
+    width: 82%;
+}
+
+.showSongList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    width: 100%;
+    height: fit-content;
+    overflow-y: auto;
+}
+
+/* 子绝父相 */
+.songListShow {
+    position: relative;
+}
+
+/* 设置图片大小 */
+.songListShow img {
+    width: 180px;
+}
+
+.songListShow div:first-child {
+    overflow: hidden;
+    border-radius: 8px;
+    width: 180px;
+    height: 180px;
+}
+
+/* 容器与图片一样宽 */
+.songListShow div:last-child {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 180px;
+}
+
+.bofangNumber {
+    width: fit-content;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    top: 0px;
+    right: 0px;
+}
+
+.bofangNumber p {
+    margin: 0;
+}
+
+/* 搜索页面 */
+#searchPage {
+    height: fit-content;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 95%;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#seachReasult {
+    width: 100%;
+}
+
+#searchPage>div {
+    width: 100%;
+}
+
+#searchDtails {
+    font-size: 135%;
+    color: black;
+    font-weight: bold;
+    margin: 10px;
+}
+
+
+#searchResultGedan li div {
+    width: 100%;
+    height: 73px;
+    display: flex;
+    align-items: center;
+}
+
+#searchResultGedan img {
+    width: 68px;
+    border-radius: 5px;
+}
+
+/* 搜索单曲列表样式 */
+
+/* 歌单页面 */
+#songListPage {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+#songListPage li {
+    width: 100%;
+}
+
+#songListIntroduce {
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 250px;
+}
+
+#songListIntroduce img {
+    width: 180px;
+    height: 180px;
+}
+
+#songListInfo {
+    height: 180px;
+    margin-left: 20px;
+}
+
+#songListCreator {
+    display: flex;
+    align-items: center;
+}
+
+#songListInfo img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+#songListInfo p {
+    font-size: 9px;
+}
+
+#gedan_songList {
+    width: 100%;
+}
+
+/* 播放列表 */
+#playList {
+    overflow-y: auto;
+    position: absolute;
+    right: 0;
+    width: 25%;
+    height: 100%;
+    z-index: 99;
+    background-color: white;
+}
+
+#playList div:nth-child(1) {
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
+    height: 10%;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#playListSongs {
+    width: 100%;
+    background-color: white;
+}
+
+.songplaying {
+    color: tomato;
+}
+
+/* 底部 */
+#underFoot {
+    position: relative;
+    height: 9%;
+    display: flex;
+    align-items: center;
+    z-index: 200;
+    background-color: white;
+}
+
+#underFoot>div {
+    margin: 10px;
+}
+
+#songInfoPageRouse {
+    height: 155.5;
+    width: 30%;
+}
+
+#songInfoPageRouse>div {
+    display: flex;
+    align-items: center;
+}
+
+#songInfoPageRouse>div {
+    position: relative;
+    margin: 10px;
+}
+
+#songInfoPageRouse img {
+    width: 45px;
+    border-radius: 4px;
+}
+
+#playListRouse {
+    position: absolute;
+    right: 20px;
+    background-color: white;
+}
+
+#songInfoPage {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 91%;
+    position: absolute;
+    top: 0;
+    z-index: 60;
+    transition: all 1s;
+}
+
+#lyric {
+    margin-top: 50px;
+    white-space: pre-line;
+    line-height: 30px;
+    height: 70%;
+    overflow-y: auto;
+}
+
+#otherSongInfo {
+    height: 70%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#otherSongInfo:first-child div {
+    font-size: 30px !important;
+}
+
+.zhankai {
+    transform: translateY(786.24px);
+}
+
+#playAction p {
+    font-size: 20px !important;
+
+}
+
+/* 登录 */
+#denglu {
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

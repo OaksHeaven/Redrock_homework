@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网易云demo</title>
+    <link rel="stylesheet" href="../样式/style.css">
+    <link rel="stylesheet" href="../样式/font.css">
+</head>
+
+<body>
+    <div id="FATHER">
+        <div id="topHeader">
+            <div id="logoimg" @click="show_this(contentBox_show,'首页')">
+                <img src="../img/logo.jpg" alt="" title="logo">
+            </div>
+            <div id="search">
+                <p class="iconfont">&#xe609</p>
+                <input id="searchI" type="text" placeholder="..." v-model="search_text" @keyup.enter="search_danqu">
+            </div>
+            <div id="user" @click="goto_denglu_page">
+                <div id="userImg"><img :src="user_img" alt=""></div>
+                <div id="userName">
+                    <p>{{user_Name}}</p>
+                </div>
+            </div>
+        </div>
+        <div id="allContent">
+            <div id="sidebar">
+                <ul>
+                    <li id="myLoveMusic">
+                        <div>
+                            <p class="iconfont"> &#xe61f </p>
+                            <p>我喜欢的音乐</p> <a href="love_Music"></a>
+                        </div>
+                    </li>
+                    <li id="sideList" v-for="(item,index) in my_songlist" v-if="index!=0 ">
+                        <div @click="goto_gedan_page(item.id)">
+                            <p class="iconfont">&#xe716</p>
+                            <p>{{my_songlist[index].name}}</p>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <div id="contentBox">
+                <div id="homePage" v-show="contentBox_show[0].ifshow">
+                    <div id="homePageSwitch" class="switchRow">
+                        <span @click="show_this(homePage_show,'个性推荐')"><a href="#">个性推荐</a></span>
+                        <span @click="goto_all"><a href="#">歌单</a></span>
+                    </div>
+                    <div id="recommend" v-show="homePage_show[0].ifshow">
+                        <div id="sideshow">
+                            <div><img :src="lunbo_img[lunboindex].imageUrl" alt=""></div>
+                            <div id="left">
+                                <p class="iconfont" @click="last_img" style="font-weight: 20px;">&#xe8ef;</p>
+                            </div>
+                            <div id="right">
+                                <p class="iconfont" @click="next_img" style="font-weight: 20px;">&#xe8f1;</p>
+                            </div>
+                        </div>
+                        <div id="recommendSongList">
+                            <span id="tiaoZHuan">
+                                <a href="#">推荐歌单</a>
+                                <p class="iconfont">&#xe8f1</p>
+                            </span>
+                            <div class="showSongList">
+                                <li class="songListShow" v-for="(item,index) in tuijian_songlist"
+                                    @click="goto_gedan_page(item.id)">
+                                    <div>
+                                        <img :src="item.picUrl" alt="">
+                                        <div class="bofangNumber">
+                                            <p class="iconfont">&#xea6d</p>
+                                            <p>{{item.playcount}}</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p>{{item.name}}</p>
+                                    </div>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="allSongList" v-show="homePage_show[1].ifshow">
+                        <div class="showSongList">
+                            <li class="songListShow" v-for="(item,index) in all_songlist"
+                                @click="goto_gedan_page(item.id)">
+                                <div>
+                                    <img :src="item.coverImgUrl" alt="">
+                                    <div class="bofangNumber">
+                                        <p class="iconfont">&#xea6d</p>
+                                        <p>{{item.playCount}}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>{{item.name}}</p>
+                                </div>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+                <div id="searchPage" v-show="contentBox_show[1].ifshow">
+                    <div id="searchDtails">
+                        <p>搜索</p>
+                        <p>{{search_text}}</p>
+                    </div>
+                    <div class="switchRow">
+                        <span @click="search_danqu"><a href="#">单曲</a></span>
+                        <span><a href="#">专辑</a></span>
+                        <span @click="search_gedan"><a href="#">歌单</a></span>
+                    </div>
+                    <div id="searchResult">
+                        <div id="searchResultDanqu" v-show="searchPage_show[0].ifshow">
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="width:45%; text-align: center;">音乐标题</td>
+                                    <td style="width:15%">歌手</td>
+                                    <td style="width:20%">专辑</td>
+                                    <td style="width:20%">时长</td>
+                                </tr>
+                            </table>
+                            <li v-for="(item,index) in search_danqu_list" @click="join_playlist(item.id)">
+                                <table style="width: 100%">
+                                    <tr>
+                                        <td style="width:45%">
+                                            <p
+                                                style="color: rgba(0,0,0,0.5); margin-left: 10px; margin-right: 20px; width: 20px;">
+                                                {{index}}</p>{{item.name}}
+                                        </td>
+                                        <td style="width:15%">{{item.artists[0].name}}</td>
+                                        <td style="width:20%">{{item.album.name}}</td>
+                                        <td style="width:20%">{{item.duration}}ms</td>
+                                    </tr>
+                                </table>
+                            </li>
+                        </div>
+                        <div id="searchResultGedan" v-show="searchPage_show[2].ifshow">
+                            <li v-for="(item,index) in search_gedan_list" @click="goto_gedan_page(item.id)"><a href="#"
+                                    style="width: 100%;">
+                                    <table style=" width: 100%;">
+                                        <tr>
+                                            <td style="width:50%">
+                                                <div><img :src="item.coverImgUrl" alt="">
+                                                    <p> &ensp;&ensp;{{item.name}}</p>
+                                                </div>
+                                            </td>
+                                            <td style="width:8%">
+                                                <p>{{item.playCount}}首</p>
+                                            </td>
+                                            <td style="width:28%">
+                                                <p>by &ensp; {{item.creator.nickname}}</p>
+                                            </td>
+                                            <td style="width:14%">
+                                                <p class="iconfont">&#xe62b;</p>
+                                                <p>{{item.playCount}}</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </a>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+                <div id="songListPage" v-show="contentBox_show[2].ifshow">
+                    <div id="songListIntroduce">
+                        <div id="songListCover">
+                            <img :src="getted_gedan_info.coverImgUrl" alt="">
+                        </div>
+                        <div id="songListInfo">
+                            <p style="font-size: 200%;">{{getted_gedan_info.name}}</p>
+                            <div id="songListCreator">
+                                <div><img :src="getted_gedan_info.creator.avatarUrl" alt=""></div>
+                                <div>
+                                    <p>{{getted_gedan_info.creator.nickname}}</p>
+                                </div>
+                            </div>
+                            <div>播放全部</div>
+                            <div style="overflow: hidden;">
+                                <div>
+                                    <p>标签:{{getted_gedan_info.tags[0]}}</p>
+                                </div>
+                                <div>
+                                    <p>歌曲:{{getted_gedan_info.playCount}}</p>
+                                </div>
+                                <div style="overflow: auto; height: 30px;">
+                                    <p>简介:{{getted_gedan_info.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="switchRow">
+                        <span><a href="#">歌曲列表</a></span>
+                        <span><a href="#">评论</a></span>
+                        <span><a href="#">收藏者</a></span>
+                    </div>
+                    <div id="gedan_songList">
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="width:45%; text-align: center;">音乐标题</td>
+                                <td style="width:15%">歌手</td>
+                                <td style="width:20%">专辑</td>
+                                <td style="width:20%">时长</td>
+                            </tr>
+                        </table>
+                        <li v-for="(item,index) in getted_gedan_songs" @click="change_playlist(index)">
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="width:45%">{{item.name}}</td>
+                                    <td style="width:15%">{{item.ar[0].name}}</td>
+                                    <td style="width:20%">{{item.al.name}}</td>
+                                    <td style="width:20%">{{item.publish_time}}ms</td>
+                                </tr>
+                            </table>
+                        </li>
+                    </div>
+                </div>
+            </div>
+            <div id="playList" v-show="ifshow_playlist">
+                <div id="dangqianbofang">当前播放</div>
+                <div id="playListSongs">
+                    <li v-for="(item,index) in current_playlist" @click="play_listmusic(index)"
+                        :class="{songplaying:(play.index==index)}">
+                        <table style="margin-left: 20px;">
+                            <tr>
+                                <td style="width: 50%;">{{item.name}}</td>
+                                <td style="width: 25%;">{{item.ar[0].name}}</td>
+                                <td style="width: 15%;">{{item.dt}}</td>
+                            </tr>
+                        </table>
+                    </li>
+                </div>
+            </div>
+        </div>
+        <div id="underFoot">
+            <div id="songInfoPageRouse" @click="songInfoPageRouse">
+                <div id="shouqi"></div>
+                <div id="zhankai">
+                    <div>
+                        <img :src="play.music_img" alt="" title="展开音乐详情页">
+                    </div>
+                    <div>
+                        <div><a href="#" style="font-size: 16px; color: rgba(0,0,0,1);">{{play.music_name}}</a>
+                        </div>
+                        <div><a href="#" style="font-size: 14px;">{{play.artists}}</a></div>
+                    </div>
+                </div>
+            </div>
+            <audio :src="play.music_url" autoplay controls @ended="cut_play('next')"></audio>
+            <div id="playAction">
+                <p class="iconfont" @click="cut_play('last')">&#xe63c;</p>
+                <p class="iconfont" @click="bofang_zanting" v-html="bofang_fontArry[bofang_fontindex]"></p>
+                <p class="iconfont" @click="cut_play('next')">&#xe63e;</p>
+            </div>
+            <div id="playListRouse" @click=changeshow_playlist>
+                <p class="iconfont" style="font-size: 20px;">&#xe6a7;</p>
+            </div>
+        </div>
+        <div id="denglu" v-show="if_denglu">
+            <div><img src="../img/登录页.jpg" alt=""></div>
+            <div>
+                <input type="text" placeholder="账号" v-model="email">
+                <input type="password" placeholder="密码" v-model="password">
+                <input type="button" value="登录" @click="login">
+            </div>
+        </div>
+        <div id="songInfoPage" :class="{zhankai:!if_zhankai}">
+            <div id="bofangAnim">
+                <div><img src="play.music_img" alt=""></div>
+            </div>
+            <div id="otherSongInfo">
+                <div>
+                    <p>{{play.music_name}}-{{play.artists}}</p>
+                </div>
+                <div id="lyric">
+                    <div v-html="play.lyric"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../交互/jquary_3.6.0.js"></script>
+    <script src="../交互/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: "#FATHER",
+            data: {
+                cookie: "",
+                user_Name: "未命名",
+                email: "",
+                password: "",
+                user_img: "",
+                uid: "",
+                if_denglu: false,
+                my_songlist: [],
+                tuijian_songlist: [],
+                search_text: "",
+                search_danqu_list: [],
+                search_gedan_list: [],
+                getted_gedan_info: {
+                    creator: {},
+                    tags: [],
+                    tracks: [],
+                    trackIds: [],
+                },
+                getted_gedan_songs: [{
+                    ar: [{}],
+                    al: {},
+                }],
+                ifshow_playlist: false,
+                current_playlist: [{
+                    ar: [{}],
+                    al: {},
+                }],
+                play: {
+                    music_url: "",
+                    music_img: "",
+                    music_name: "",
+                    artists: "",
+                    lyric: "",
+                    comments: "",
+                    indx: "",
+                    /*当前歌曲在播放列表的索引*/
+                },
+                if_zhankai: false,
+                contentBox_show: [{
+                    type: "首页",
+                    ifshow: true
+                }, {
+                    type: "搜索页",
+                    ifshow: false
+                }, {
+                    type: "歌单页",
+                    ifshow: false
+
+                }],
+                searchPage_show: [{
+                    type: "单曲",
+                    ifshow: true
+                }, {
+                    type: "专辑",
+                    ifshow: false
+                }, {
+                    type: "歌单",
+                    ifshow: false
+
+                }],
+                bofang_fontindex: 0,
+                bofang_fontArry: ['&#xe62b;', '&#xe616;'],
+                isPlaying: false,
+                all_songlist: [
+
+                ],
+                homePage_show: [{
+                    type: "个性推荐",
+                    ifshow: true
+                }, {
+                    type: "歌单",
+                    ifshow: false
+                }],
+                lunbo_img: [{
+                    imgUrl: ""
+                }],
+                lunboindex: 0,
+            },
+            methods: {
+                login: function () {
+                    axios.post("http://redrock.udday.cn:2022/login", {
+                            "email": this.email,
+                            "password": this.password
+                        })
+                        .then(res => {
+                            console.log(res)
+                            this.uid = res.data.account.id
+                            this.user_img = res.data.profile.avatarUrl
+                            this.user_Name = res.data.profile.nickname
+                            this.cookie = res.data.cookie
+                        })
+                        .then(() => {
+                            axios.get("http://redrock.udday.cn:2022/user/subcount?cookie=" +
+                                    this.cookie)
+                                .then(res => {
+                                    console.log(res)
+                                    console.log(this.user_img)
+                                }).then(() => {
+                                    axios.get(
+                                            "http://redrock.udday.cn:2022/user/playlist?uid=" +
+                                            this
+                                            .uid)
+                                        .then(res => {
+                                            console.log(res)
+                                            this.my_songlist = res.data.playlist
+                                        }).then(() => {
+                                            axios.get(
+                                                    "http://redrock.udday.cn:2022/recommend/resource?cookie=" +
+                                                    this.cookie)
+                                                .then(res => {
+                                                    console.log(res)
+                                                    this.tuijian_songlist = res.data
+                                                        .recommend
+                                                }).then(() => {
+                                                    axios.get(
+                                                            "http://redrock.udday.cn:2022/banner"
+                                                        )
+                                                        .then(res => {
+                                                            this.lunbo_img = res.data
+                                                                .banners
+                                                            console.log(this.lunbo_img)
+                                                        })
+                                                })
+                                        })
+                                })
+                        })
+                    this.if_denglu = false
+                },
+                next_img: function () {
+                    this.lunboindex = (this.lunbo_img.length + this.lunboindex + 1) % this.lunbo_img.length
+                },
+                last_img: function () {
+                    this.lunboindex = (this.lunbo_img.length + this.lunboindex - 1) % this.lunbo_img.length
+                },
+                goto_denglu_page: function () {
+                    this.if_denglu = true
+                },
+                search_danqu: function () {
+                    axios.get("http://redrock.udday.cn:2022/search?keywords=" + this.search_text)
+                        .then(res => {
+                            console.log("搜索")
+                            console.log(res)
+                            this.search_danqu_list = res.data.result.songs
+                        }).then(() => {
+                            this.show_this(this.contentBox_show, "搜索页")
+                        })
+                    this.show_this(this.searchPage_show, "单曲")
+                },
+                search_gedan: function () {
+                    axios.get("http://redrock.udday.cn:2022/search?keywords=" + this.search_text +
+                            "&type=1000")
+                        .then(res => {
+                            console.log("搜索歌单")
+                            console.log(res)
+                            this.search_gedan_list = res.data.result.playlists
+                        })
+                    this.show_this(this.searchPage_show, "歌单")
+                },
+                goto_gedan_page: function (gedan_id) {
+                    axios.get("http://redrock.udday.cn:2022/playlist/detail?id=" + gedan_id)
+                        .then(res => {
+                            console.log('歌单')
+                            console.log(res)
+                            this.getted_gedan_info = res.data.playlist
+                            this.getted_gedan_songs = [{
+                                ar: [{}],
+                                al: {},
+                            }]
+                        }).then(() => {
+                            for (let i = 0; i < this.getted_gedan_info.trackIds.length; i++) {
+                                axios.get("http://redrock.udday.cn:2022/song/detail?ids=" + this
+                                        .getted_gedan_info.trackIds[i].id)
+                                    .then(res => {
+                                        console.log('歌曲')
+                                        console.log(res)
+                                        this.getted_gedan_songs.push(res.data.songs[0])
+                                    })
+                            }
+                            this.show_this(this.contentBox_show, "歌单页")
+                        })
+                },
+                changeshow_playlist: function () {
+                    this.ifshow_playlist = !this.ifshow_playlist
+                    console.log(this.ifshow_playlist)
+                },
+                join_playlist: function (song_id) {
+                    axios.get("http://redrock.udday.cn:2022/song/detail?ids=" + song_id)
+                        .then(res => {
+                            console.log("歌曲详情")
+                            console.log(res)
+                            this.current_playlist.push(res.data.songs[0])
+                            console.log(this.current_playlist)
+                            this.play_listmusic(this.current_playlist.length - 1)
+                        })
+                },
+                change_playlist: function (index) {
+                    this.current_playlist = this.getted_gedan_songs
+                    this.play_listmusic(index)
+                },
+                play_listmusic: function (playlist_index) {
+                    axios.get("http://redrock.udday.cn:2022/song/url?id=" + this.current_playlist[
+                            playlist_index].id)
+                        .then(res => {
+                            console.log(res)
+                            this.play.music_url = res.data.data[0].url
+                            this.play.music_img = this.current_playlist[playlist_index].al.picUrl
+                            this.play.music_name = this.current_playlist[playlist_index].name
+                            this.play.artists = this.current_playlist[playlist_index].ar[0].name
+                            this.play.index = playlist_index
+                        }).then(() => {
+                            axios.get("http://redrock.udday.cn:2022/lyric?id=" + this
+                                    .current_playlist[
+                                        playlist_index].id)
+                                .then(res => {
+                                    console.log(res)
+                                    this.play.lyric = res.data.lrc.lyric.replace('\n', '<br>')
+                                    console.log(this.play)
+                                })
+                        })
+
+                },
+                cut_play: function (action) {
+                    if (action === "next") {
+                        if (this.play.index == this.current_playlist.length - 1) {
+                            this.play_listmusic(0)
+                        } else {
+                            this.play_listmusic(this.play.index + 1)
+                        }
+                    }
+                    if (action === "last") {
+                        if (this.play.index == 1) {
+                            this.play_listmusic(this.current_playlist.lenth - 1)
+                        } else {
+                            this.play_listmusic(this.play.index - 1)
+                        }
+                    }
+                },
+                songInfoPageRouse: function () {
+                    this.if_zhankai = !this.if_zhankai;
+                },
+                show_this: function (thing, name) {
+                    for (let i = 0; i < thing.length; i++) {
+                        if (thing[i].type == name) {
+                            thing[i].ifshow = true
+                        } else {
+                            thing[i].ifshow = false
+                        }
+                    }
+                },
+                bofang_zanting: function () {
+                    if (this.bofang_fontindex == 0) {
+                        this.bofang_fontindex = 1
+                    } else {
+                        this.bofang_fontindex = 0
+                    }
+                },
+                goto_all: function () {
+                    axios.get("http://redrock.udday.cn:2022/top/playlist/highquality?limit=100")
+                        .then(res => {
+                            this.all_songlist = res.data.playlists
+                            console.log(res)
+                            this.all_songlist = res.data.playlists
+                        }).then(() => {
+                            console.log(this.all_songlist)
+                            this.show_this(this.homePage_show, '歌单')
+                        })
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>
