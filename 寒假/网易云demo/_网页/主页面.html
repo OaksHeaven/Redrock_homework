@@ -127,7 +127,7 @@
                                         <td style="width:45%">
                                             <p
                                                 style="color: rgba(0,0,0,0.5); margin-left: 10px; margin-right: 20px; width: 20px;">
-                                                {{index}}</p>{{item.name}}
+                                                {{index+1}}</p>{{item.name}}
                                         </td>
                                         <td style="width:15%">{{item.artists[0].name}}</td>
                                         <td style="width:20%">{{item.album.name}}</td>
@@ -426,7 +426,7 @@
                     this.if_denglu = true
                 },
                 search_danqu: function () {
-                    axios.get("http://redrock.udday.cn:2022/search?keywords=" + this.search_text)
+                    axios.get("http://redrock.udday.cn:2022/search?limit=100&keywords=" + this.search_text)
                         .then(res => {
                             console.log("搜索")
                             console.log(res)
