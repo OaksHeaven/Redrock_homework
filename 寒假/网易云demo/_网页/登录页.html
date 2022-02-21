@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邮箱登录</title>
+    <link rel="stylesheet" href="../样式/style.css">
+    <link rel="stylesheet" href="../样式/font.css">
+</head>
+
+<body>
+    <div id="FATHER">
+        <div><img src="../img/登录页.jpg" alt=""></div>
+        <div>
+            <input type="text" placeholder="账号" v-model="email">
+            <input type="password" placeholder="密码" v-model="password">
+            <input type="button" value="登录" @click="login">
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../交互/jquary_3.6.0.js"></script>
+    <script src="../交互/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: "#FATHER",
+            data: {
+                songList_name: "?",
+                userName: "未命名",
+                email: "",
+                password: "",
+            },
+            methods: {
+                login: function () {
+                    axios.post("http://redrock.udday.cn:2022/login", {
+                            "email": this.email,
+                            "password": this.password
+                        })
+                        .then(res => {
+                            console.log(res)
+                        })
+                        .catch(err => {
+                            console.error(err);
+                        })
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
