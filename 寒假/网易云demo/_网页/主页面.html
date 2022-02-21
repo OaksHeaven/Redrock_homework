@@ -220,7 +220,8 @@
             <div id="playList" v-show="ifshow_playlist">
                 <div id="dangqianbofang">当前播放</div>
                 <div id="playListSongs">
-                    <li v-for="(item,index) in current_playlist" @click="play_listmusic(index)">
+                    <li v-for="(item,index) in current_playlist" @click="play_listmusic(index)"
+                        :class="{songplaying:(play.index==index)}">
                         <table style="margin-left: 20px;">
                             <tr>
                                 <td style="width: 50%;">{{item.name}}</td>
@@ -456,9 +457,9 @@
                                 al: {},
                             }]
                         }).then(() => {
-                            for (let i = 0; i < this.getted_gedan_info.tracks.length; i++) {
+                            for (let i = 0; i < this.getted_gedan_info.trackIds.length; i++) {
                                 axios.get("http://redrock.udday.cn:2022/song/detail?ids=" + this
-                                        .getted_gedan_info.tracks[i].id)
+                                        .getted_gedan_info.trackIds[i].id)
                                     .then(res => {
                                         console.log('歌曲')
                                         console.log(res)
