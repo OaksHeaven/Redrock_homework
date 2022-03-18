@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="debounce_input">防抖
+    <br>
+    <input type="text" id="throttle_input">节流
+    <script>
+        const debounce = function (func, wait) {
+            let timer = null;
+            return () => {
+                clearTimeout(timer);
+                timer = setTimeout(func, wait)
+            }
+        }
+
+        const throttle = function (func, interval) {
+            let timer = null,
+                if_first = true;
+            return () => {
+                if (if_first) {
+                    func.apply(this)
+                }
+                if (timer) {
+                    if_first = false
+                }
+                timer = setTimeout(() => {
+                    clearTimeout(timer)
+                    func.apply(this)
+                }, interval)
+            }
+        }
+        debounce_input = document.getElementById('debounce_input')
+        debounce_input.addEventListener('keyup', debounce(() => {
+            console.log(debounce_input.value)
+        }, 1000))
+        throttle_input = document.getElementById('throttle_input')
+        throttle_input.addEventListener('keyup', throttle(() => {
+            console.log(throttle_input.value)
+        }, 1000))
+    </script>
+</body>
+
+</html>
