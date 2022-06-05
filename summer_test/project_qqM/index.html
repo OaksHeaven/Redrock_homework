@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qqM</title>
+    <link rel="stylesheet" href="./src/css/main.css">
+    <link rel="stylesheet" href="./src/css/iconfont.css">
+</head>
+
+<body>
+    <div class="header">
+        <div>
+            <div class="top_logo_box">
+                <span><img src="./src/img/logo.jpg" alt=""></span>
+                <div class="top_text">
+                    <p>QQ音乐</p>
+                    <p>打开app收藏下载</p>
+                </div>
+            </div>
+            <div class="head_tap">
+                <a class="tuijian head_tap_clicked">
+                    <p>推荐</p>
+                </a>
+                <a class="paihang">
+                    <p>排行</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="tuijian_box">
+        <div class="search_box">
+            <input type="text" class="search" placeholder="搜索">
+            <i class="iconfont icon-sousuo" id="glass"></i>
+            <i class="iconfont icon-guanbi" id="search_cancel_i" style="display: none;"></i>
+            <span class="search_cancel_span"><strong>取消</strong></span>
+        </div>
+        <div class="main_box">
+            <div class="mod">
+                <div class="mod_name">
+                    <p>官方歌单</p>
+                    <a href=""><span>更多</span><i class="iconfont icon-youjiantou"></i></a>
+                </div>
+                <div class="mod_scroll_box">
+                    <ul class="mod_scroll_sliding">
+                    </ul>
+                </div>
+            </div>
+            <div class="mod">
+                <div class="mod_name">
+                    <p>达人歌单</p>
+                    <a href=""><span>更多</span><i class="iconfont icon-youjiantou"></i></a>
+                </div>
+                <div class="mod_scroll_box">
+                    <div>
+                        <ul class="mod_scroll_sliding">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mod">
+                <div class="mod_name">
+                    <p>专区</p>
+                    <a href=""><span>更多</span><i class="iconfont icon-youjiantou"></i></a>
+                </div>
+                <div class="mod_scroll_box">
+                    <div>
+                        <ul class="mod_scroll_sliding">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search_content" style="display: none;">
+            <div id="recommend_search">
+                <div class="search_content_showInfo" id="history_search" style="display: none;">
+                    <p class="search_content_showInfo_title">搜索历史<span class="iconfont icon-shanchu"></span></p>
+                    <div class="search_content_showInfo_item">
+                    </div>
+                </div>
+                <div class="search_content_showInfo" id="hot_search">
+                    <p class="search_content_showInfo_title">热门搜索</p>
+                    <div class="search_content_showInfo_item">
+                    </div>
+                </div>
+            </div>
+            <div id="search_results">
+                <ul class="search_results_ul">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="paihang_box" style="display: none;">
+        <ul class="paihang_ul">
+        </ul>
+    </div>
+    <div class="footer">
+        <div class="footer_logo"><img class="copyright__logo" src="./src/img/footerLogo.png" alt="QQ音乐"></div>
+        <p class="copyright">Copyright © 1998 - <span>2019</span> Tencent. All Rights Reserved.</p>
+    </div>
+</body>
+<script src="./src/js/rem.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./src/js/index.js"></script>
+
+</html>
