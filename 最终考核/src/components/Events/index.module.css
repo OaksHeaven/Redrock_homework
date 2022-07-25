@@ -1,0 +1,29 @@
+.events {
+  width: 100vw;
+  padding: 5vw;
+}
+
+.events > li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  margin-bottom: 0.4rem;
+}
+
+.userImg {
+  width: 9%;
+  border-radius: 50%;
+
+  margin-right: 0.1rem;
+}
+
+.content {
+  flex: 1;
+}
+
+.detail_img > img {
+  width: 6rem;
+
+  border-radius: 0.1rem;
+}

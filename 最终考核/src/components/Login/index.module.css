@@ -1,0 +1,29 @@
+#login {
+  padding: 0 0.1rem;
+}
+
+.header {
+  background-color: tomato;
+}
+
+.input_box {
+  margin-top: 0.3rem;
+}
+.input_box input {
+  margin-top: 0.3rem;
+
+  display: block;
+
+  width: 100%;
+
+  border-bottom: 0.02rem solid #ccc;
+}
+
+button {
+  margin-top: 0.6rem;
+  width: 100%;
+  height: 0.5rem;
+  border-radius: 0.6rem;
+  background-color: #ea2027;
+  color: white;
+}

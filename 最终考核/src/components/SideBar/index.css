@@ -1,0 +1,45 @@
+.sidebar {
+  position: absolute;
+
+  top: 0;
+  background-color: white;
+  width: 85%;
+  height: 100%;
+  display: flex;
+
+  transition: 0.2s ease-out;
+  /* 造成视差 */
+  padding-right: 0.16rem;
+
+  box-sizing: border-box;
+
+  z-index: 1;
+}
+
+.side_header {
+  position: absolute;
+
+  height: 0.7rem;
+  width: 100%;
+  background-color: rgb(236, 63, 32);
+  top: 0rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.side_header div {
+  margin-right: 0.1rem;
+}
+
+.side_header img {
+  width: 0.4rem;
+  border-radius: 50%;
+}
+
+.side_items {
+  margin-top: 0.8rem;
+
+  width: 100%;
+  background-color: gray;
+}

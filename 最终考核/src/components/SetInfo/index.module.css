@@ -1,0 +1,38 @@
+.all_content > div {
+  margin-bottom: 0.15rem;
+}
+
+.header {
+  height: 0.9rem;
+  width: 100%;
+  background-color: white;
+
+  display: flex;
+  align-items: center;
+}
+
+.groups {
+  background: white;
+}
+
+.groups img {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+}
+
+.groups > li {
+  padding: 0 0.2rem;
+
+  height: 0.9rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 0.01rem solid rgba(0, 0, 0, 0.1);
+}
+
+.groups p:nth-child(2) {
+  color: rgba(0, 0, 0, 0.5);
+}

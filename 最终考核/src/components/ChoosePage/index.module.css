@@ -1,0 +1,97 @@
+/* 选择-切换块 */
+.choose_box {
+  width: auto;
+  /* height: 100vh; */
+  height: auto;
+  margin-top: 8.8rem;
+  top: 0;
+  overflow: auto;
+
+  position: absolute;
+
+  display: flex;
+  align-items: flex-start;
+
+  transition: 0.3s ease-out;
+}
+
+/* 主页、动态、播课 */
+.choose_box > div {
+  flex-shrink: 0;
+}
+/* 主页 */
+#main_page {
+  margin-left: 0.24rem;
+  margin-right: 0.24rem;
+  width: 7.02rem;
+  height: auto;
+
+  border-radius: 0.16rem;
+}
+/* 动态 */
+#events {
+  width: 100vw;
+  background-color: white;
+}
+/* 播客 */
+#players {
+  width: 100vw;
+}
+.item_box {
+  background: white;
+  margin-bottom: 0.2rem;
+
+  border-radius: 0.16rem;
+
+  /* 内填充 */
+  padding: 0.2rem;
+}
+
+/* 标题加粗 */
+.item_box > p {
+  font-weight: 750;
+}
+
+.base_info > p {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.item_box li {
+  display: flex;
+  height: auto;
+  height: 1rem;
+
+  align-items: center;
+}
+
+.item_box li img {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 6px;
+}
+
+.item_text P:nth-child(2) {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.item_text {
+  margin-left: 0.2rem;
+}
+
+/* 单个页面 */
+.single_page {
+  width: 100vw;
+  flex-shrink: 0;
+  /* padding-right: 0.5rem; */
+  height: 100vh;
+
+  /* position: absolute; */
+}
+
+.choose_boxB {
+  overflow-y: auto;
+}
+
+/* .mainPage {
+  padding-right: 0.5rem;
+} */

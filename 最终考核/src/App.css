@@ -1,0 +1,48 @@
+.App {
+  /* 提供相对定位 */
+  position: relative;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+
+  overflow: auto;
+  font: 14px/1.5 "Microsoft YaHei", arial, tahoma, \5b8b\4f53, sans-serif;
+
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ol,
+ul,
+li {
+  list-style: none;
+  border: 0;
+  padding: 0;
+  height: auto;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+}
+
+button,
+input {
+  background: none;
+  outline: none;
+  border: none;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
